@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8AAAD7+/s6OjqUlJTc3NyGhobg4OBhYWHw8PAYGBiioqIvLy89PT2Dg4MeHh5bW1vn5+c0NDREREQRERFUVFSurq5mbZGKAAABQUlEQVR4nO3cWU7DMABF0ZK2pJDO0/6XivikRoJIqcMz5yzAevczVpLFAgAAAAAAAACgNcPq0TD3pGl125dH227uUZPqlkXhUmEWhfkU5lOYT2E+hfkU5lOYT2E+hfkU5lOYT2E+hfkU5lOYT2E+hfkU5lOYT2E+hQ3YFYW7uSf9ZNi/jrA/FIWHcQfUf1nzWEx+rmP1wk3lwo1ChQoVKlSoUKFChQoVKvyThe0/AZ/6MdbnYvJ5PeqEU/XCkb65a5t70rTav01UmE9hPoX5FOZTmE9hPoX5FOZTmE9hPoX5FOZTmE9hPoX5FOZTmE9hPoX5FOZTmO8fFF6u719dL20VLt5Kc08CAAAAPvXruvrqhbfiaum5btUL2//SWaFChQoVKlSoUKFChQoV/kb7/4m6r+q6Vy8EAAAAAAAAABjtA7ClJ1BY/7sWAAAAAElFTkSuQmCC"
+    />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <main id="calculator" class="border-2 border-gray-700 w-fit mx-auto mt-20">
+      <div
+        id="display"
+        class="w-80 h-24 p-2 text-5xl bg-gray-100 border-b border-b-gray-700 mb-2 flex justify-end items-end"
+      ></div>
+      <div
+        id="buttons"
+        class="grid w-80 p-1 grid-cols-4 text-center gap-y-6 gap-x-2 text-xl font-bold text-gray-950"
+      >
+        <div id="clr-scr" class="button">A/C</div>
+        <div id="backspace" class="button">&larr;</div>
+        <div class="button operator">%</div>
+        <div class="button operator">/</div>
+        <div class="button numeric">7</div>
+        <div class="button numeric">8</div>
+        <div class="button numeric">9</div>
+        <div class="button operator">*</div>
+        <div class="button numeric">4</div>
+        <div class="button numeric">5</div>
+        <div class="button numeric">6</div>
+        <div class="button operator">-</div>
+        <div class="button numeric">1</div>
+        <div class="button numeric">2</div>
+        <div class="button numeric">3</div>
+        <div class="button operator">+</div>
+        <div class="button numeric">0</div>
+        <div class="button numeric">.</div>
+        <div id="change-sign" class="button">+/-</div>
+        <div id="evaluave" class="button">=</div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
