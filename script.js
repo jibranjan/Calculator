@@ -83,7 +83,6 @@ for (let i = 0; i < buttonsEl.length; i++) {
               displayEl.innerText = result;
             }
           }
-          currentOperand = result;
         }
       }
     } else {
@@ -148,7 +147,6 @@ for (let i = 0; i < buttonsEl.length; i++) {
             displayEl.innerText = result;
           }
         }
-        currentOperand = result;
       }
     }
   });
