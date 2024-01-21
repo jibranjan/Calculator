@@ -8,7 +8,7 @@ let operatorEl = document.getElementsByClassName("operator");
 let operatorArray = Array.from(operatorEl);
 
 let currentOperand = "";
-let previousOperator = "";
+let isEqualTo = 0;
 let currentOperator = "";
 let previousOperand = "";
 let operand2 = "";
@@ -46,7 +46,6 @@ for (let i = 0; i < buttonsEl.length; i++) {
         if (buttonsEl[i].innerHTML == "←") {
           displayEl.innerHTML = Math.floor(displayEl.innerHTML / 10);
           currentOperand = Math.floor(currentOperand / 10);
-          console.log(currentOperand);
         }
         if (buttonsEl[i].innerHTML == "+/-") {
           displayEl.innerText = displayEl.innerText * -1;
@@ -54,7 +53,6 @@ for (let i = 0; i < buttonsEl.length; i++) {
         }
         if (operatorArray.includes(buttonsEl[i])) {
           displayEl.innerText = buttonsEl[i].innerHTML;
-          console.log(currentOperator);
           if (currentOperator !== "") {
             previousOperand = eval(
               previousOperand + "" + currentOperator + "" + currentOperand
@@ -62,7 +60,6 @@ for (let i = 0; i < buttonsEl.length; i++) {
           } else {
             previousOperand = currentOperand;
           }
-          console.log(previousOperand);
           currentOperator = buttonsEl[i].innerHTML;
           currentOperand = "";
         }
@@ -87,6 +84,14 @@ for (let i = 0; i < buttonsEl.length; i++) {
       }
     } else {
       if (numericArray.includes(buttonsEl[i])) {
+        if (isEqualTo !== 0) {
+          //   isEqualTo = 0;
+          displayEl.innerText = "";
+          currentOperand = "";
+          previousOperand = "";
+          currentOperator = "";
+        }
+        isEqualTo = 0;
         let currentDisplayValue = displayEl.innerText;
         if (["+", "-", "*", "/"].includes(currentDisplayValue)) {
           displayEl.innerText = buttonsEl[i].innerText;
@@ -100,6 +105,7 @@ for (let i = 0; i < buttonsEl.length; i++) {
         }
       }
       if (buttonsEl[i].innerHTML == "A/C") {
+        isEqualTo = 0;
         displayEl.innerText = "";
         currentOperand = "";
         currentOperator = "";
@@ -109,15 +115,14 @@ for (let i = 0; i < buttonsEl.length; i++) {
       if (buttonsEl[i].innerHTML == "←") {
         displayEl.innerHTML = Math.floor(displayEl.innerHTML / 10);
         currentOperand = Math.floor(currentOperand / 10);
-        console.log(currentOperand);
       }
       if (buttonsEl[i].innerHTML == "+/-") {
         displayEl.innerText = displayEl.innerText * -1;
         currentOperand = currentOperand * -1;
       }
       if (operatorArray.includes(buttonsEl[i])) {
+        isEqualTo = 0;
         displayEl.innerText = buttonsEl[i].innerHTML;
-        console.log(currentOperator);
         if (currentOperator !== "") {
           previousOperand = eval(
             previousOperand + "" + currentOperator + "" + currentOperand
@@ -125,12 +130,12 @@ for (let i = 0; i < buttonsEl.length; i++) {
         } else {
           previousOperand = currentOperand;
         }
-        console.log(previousOperand);
         currentOperator = buttonsEl[i].innerHTML;
         //   previousOperand = currentOperand;
         currentOperand = "";
       }
       if (buttonsEl[i].innerHTML == "=") {
+        isEqualTo++;
         if (currentOperator == "%") {
           result = eval((previousOperand / 100) * currentOperand);
           if (result.length > 12) {
@@ -144,7 +149,15 @@ for (let i = 0; i < buttonsEl.length; i++) {
           if (result > 999999999999) {
             displayEl.innerHTML = "Error";
           } else {
-            displayEl.innerText = result;
+            if (
+              currentOperand == "" &&
+              currentOperator == "" &&
+              previousOperand == ""
+            ) {
+              displayEl.innerHTML = "";
+            } else {
+              displayEl.innerText = "=" + result;
+            }
           }
         }
       }
